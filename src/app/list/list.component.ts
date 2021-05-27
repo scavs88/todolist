@@ -34,14 +34,26 @@ export class ListComponent implements OnInit {
   ];
 
 
-  addToList(form:NgForm)
+  addToList(form:NgForm):void
   {
     let newItem:ToDo = {
       task: form.form.value.task,
-      completed: form.form.value.completed,
+      completed: false
     };
     this.list.push(newItem);
   };
+
+    setComplete(index:number):void
+    {
+      this.list[index].completed = true;
+    };
+
+
+    removeTask(index:number):void
+    {
+      this.list.splice(index,1);
+    };
+
 
 
 

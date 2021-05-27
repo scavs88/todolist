@@ -1,13 +1,12 @@
 <h1>GET THIS SHIT DONE</h1>
 <div *ngFor="let l of list; index as i">
-    <p> {{i+1}} {{l.task}}</p>
-    <h2 *ngIf="l.completed">Completed</h2> 
+    <button (click)="setComplete(i)" *ngIf="!l.completed" >Complete</button>
+    <p> {{i+1}}. {{l.task}}</p>   
+    <button (click)="removeTask(i)">x</button>
 </div>
 
 
-<h2>Add item to list</h2>
-<form #listForm="ngForm" (ngSubmit)="addToList(listForm)">  
-    <input name="task" ngModel="">
-    <input name="completed" ngModel="" />
-    <button>Add to list</button>
+<form #taskForm="ngForm" (ngSubmit)="addToList(taskForm)">
+    <input type="text" ngModel name="task" placeholder="Add Task To-do">
+    <button>Add</button>
 </form>
